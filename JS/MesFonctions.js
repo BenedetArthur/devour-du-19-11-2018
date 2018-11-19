@@ -23,7 +23,6 @@ $.ajax
 
 function AfficherVilles(idRegion)
 {
-    numRegion=idRegion;
     $.ajax(
     {
         type:"get",
@@ -34,9 +33,10 @@ function AfficherVilles(idRegion)
             $('#villes').empty();
             $('#villes').append(data);
         },
-        error:function()
+        error:function(data)
         {
             alert('Erreur sur les villes ');
+            console.log(data);
         }
     }
     );
@@ -44,5 +44,25 @@ function AfficherVilles(idRegion)
 
 function AjouterNote()
 {
+    var tabVilles= Array();
+    var tabVote= Array();
 
+    $('input[type=checkbox]').each(
+        function(){
+            tabVilles.push($(this).val());
+            tabVote.push($(this).is(":checked"));
+        }
+    );
+    $.ajax(
+        {
+            type:"get",
+            url:"index.php/Index_GestionRegion/AjouterNotes",
+            data:"tabVi="+tabVilles+"&tabVo="+tabVote,
+            sucess: function(){},
+            error: function()
+        {
+            alert("Erreur sur la mise à jour des notes");
+        }
+        }
+        );
 }

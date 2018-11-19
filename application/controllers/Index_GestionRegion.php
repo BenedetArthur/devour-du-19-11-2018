@@ -20,5 +20,10 @@ class index_GestionRegion extends CI_controller
         $data['lesVilles'] = $this->Model_Villes->getVilles($idRegion);
         $this->load->view('View_Villes', $data);
     }
+
+    function AjouterNote(){
+        $this->load->model('Model_Note');
+        $this->Model_Note->UpdateNote($_GET['tabVi'],$_GET['tabVo']);
+    }
 }
 ?>
