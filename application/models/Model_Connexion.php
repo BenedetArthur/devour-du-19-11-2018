@@ -14,7 +14,7 @@ class Model_Connexion extends CI_Model
             $this->session->nomUser = $sql->result()[0]->nomUser;
             $this->session->statutUser = $sql->result()[0]->statutUser;
             $this->session->idUser = $sql->result()[0]->idUser;
-        if (statutUser == "admin")
+        if ($this->session->statutUser == "admin")
             $sql = $this->db->query('SELECT *
                                     from region');
         else
