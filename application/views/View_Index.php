@@ -11,5 +11,16 @@
     </head>
     <body>
     <h1>Votre Nom</h1>
-    <input type="text" value="login" placeholder="login">
+    <form>
+    <input name="login" type="text" class="form-control" id="login" aria-describedby="pseudo" placeholder="Entrer votre nom d'utilisateur">
+    <button id="connexion" type="submit">Connexion</button>
+    </form>
+    <br>
+    <div id="regions">
+    </div>
+    <script>
+        $(document).ready(function() {
+            $("#connexion").click(connexion);
+         });
+    </script>
     </body>
